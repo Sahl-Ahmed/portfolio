@@ -1,0 +1,96 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'shsahl1125@gmail.com' || 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Project rules
+    match /projects/{projectId} {
+      allow read, write: if true;
+    }
+
+    // Gallery rules
+    match /gallery/{galleryId} {
+      allow read, write: if true;
+    }
+
+    // Experience rules
+    match /experience/{experienceId} {
+      allow read, write: if true;
+    }
+
+    // Services rules
+    match /services/{serviceId} {
+      allow read, write: if true;
+    }
+
+    // Hero rules
+    match /hero/{heroId} {
+      allow read, write: if true;
+    }
+
+    // About rules
+    match /about/{aboutId} {
+      allow read, write: if true;
+    }
+
+    // Contact rules
+    match /contact/{contactId} {
+      allow read, write: if true;
+    }
+
+    // Achievements rules
+    match /achievements/{achievementId} {
+      allow read, write: if true;
+    }
+
+    // Education rules
+    match /education/{educationId} {
+      allow read, write: if true;
+    }
+
+    // Skills rules
+    match /skills/{skillId} {
+      allow read, write: if true;
+    }
+
+    // Social Links rules
+    match /socials/{socialId} {
+      allow read, write: if true;
+    }
+
+    // Settings rules
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+
+    // AI Sessions rules (Temporary Chat Sessions)
+    match /ai_sessions/{sessionId} {
+      allow read, write: if true;
+    }
+
+    // Submissions rules (Public write, Admin read)
+    match /submissions/{submissionId} {
+      allow read, write: if true;
+    }
+  }
+}

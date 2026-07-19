@@ -1,0 +1,14 @@
+name = "sahl-ai-worker"
+main = "src/index.ts"
+compatibility_date = "2024-04-03"
+
+[vars]
+FIREBASE_PROJECT_ID = "sahl-ahmed"
+FIREBASE_DATABASE_ID = "ai-studio-sahlahmedportfol-78e614c3-e202-4462-8ec8-c0f84f264a21"
+
+# Non-sensitive variables go here
+
+# Secrets (such as GEMINI_API_KEY and GROQ_API_KEY) must not be configured here.
+# Instead, upload them using wrangler command:
+#   echo "your_key" | wrangler secret put GEMINI_API_KEY
+#   echo "your_key" | wrangler secret put GROQ_API_KEY

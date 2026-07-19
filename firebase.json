@@ -1,0 +1,12 @@
+{
+  "firestore": [
+    {
+      "database": "(default)",
+      "rules": "firestore.rules"
+    },
+    {
+      "database": "ai-studio-sahlahmedportfol-78e614c3-e202-4462-8ec8-c0f84f264a21",
+      "rules": "firestore.rules"
+    }
+  ]
+}

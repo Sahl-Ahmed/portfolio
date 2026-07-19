@@ -1,0 +1,204 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A creative masterpiece or portfolio work",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "description": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "image": { "type": "string" },
+        "images": { "type": "array" },
+        "videoUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "software": { "type": "array" },
+        "likes": { "type": "integer" },
+        "featured": { "type": "boolean" },
+        "deliverables": { "type": "array" },
+        "views": { "type": "integer" }
+      },
+      "required": ["id", "title", "description", "category", "likes"]
+    },
+    "Achievement": {
+      "title": "Achievement",
+      "description": "An award or accomplishment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "required": ["id", "title", "description"]
+    },
+    "Education": {
+      "title": "Education",
+      "description": "An educational milestone",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "institution": { "type": "string" },
+        "department": { "type": "string" }
+      },
+      "required": ["id", "institution", "department"]
+    },
+    "SkillItem": {
+      "title": "SkillItem",
+      "description": "A software skill or capability",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "experienceStartedDate": { "type": "string" },
+        "comment": { "type": "string" }
+      },
+      "required": ["name", "experienceStartedDate"]
+    },
+    "SocialLink": {
+      "title": "SocialLink",
+      "description": "A social network connection link",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string" }
+      },
+      "required": ["id", "name", "url"]
+    },
+    "Submission": {
+      "title": "Submission",
+      "description": "A user-submitted lead or project brief",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "description": { "type": "string" },
+        "hireOption": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "description"]
+    },
+    "SectionTexts": {
+      "title": "SectionTexts",
+      "description": "Global section texts and settings",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroDescription": { "type": "string" },
+        "heroImage": { "type": "string" },
+        "aboutTitle": { "type": "string" },
+        "aboutDescription": { "type": "string" },
+        "aboutQuote": { "type": "string" },
+        "contactsMeta": { "type": "object" }
+      },
+      "required": ["heroTitle", "heroDescription"]
+    },
+    "CategoryList": {
+      "title": "CategoryList",
+      "description": "Dynamic categories for portfolio works",
+      "type": "object",
+      "properties": {
+        "list": { "type": "array" }
+      },
+      "required": ["list"]
+    },
+    "Experience": {
+      "title": "Experience",
+      "description": "Professional experience timeline entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "company": { "type": "string" },
+        "employmentType": { "type": "string" },
+        "location": { "type": "string" },
+        "description": { "type": "string" },
+        "softwareUsed": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "isCurrent": { "type": "boolean" },
+        "website": { "type": "string" },
+        "sortOrder": { "type": "integer" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "company", "startDate"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "An offered service item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "skills": { "type": "array" },
+        "basePrice": { "type": "integer" }
+      },
+      "required": ["id", "title", "description", "icon", "skills", "basePrice"]
+    }
+  },
+  "firestore": {
+    "projects/{projectId}": {
+      "schema": "Project",
+      "description": "Individual portfolio masterpiece documents"
+    },
+    "gallery/{galleryId}": {
+      "schema": "Project",
+      "description": "Individual daily practice work documents"
+    },
+    "achievements/{achievementId}": {
+      "schema": "Achievement",
+      "description": "Milestones and achievements"
+    },
+    "education/{educationId}": {
+      "schema": "Education",
+      "description": "Education status entries"
+    },
+    "skills/{skillId}": {
+      "schema": "SkillItem",
+      "description": "Software skills with start dates"
+    },
+    "socials/{socialId}": {
+      "schema": "SocialLink",
+      "description": "Social/video channel links"
+    },
+    "submissions/{submissionId}": {
+      "schema": "Submission",
+      "description": "Inquiries sent by viewers"
+    },
+    "experience/{experienceId}": {
+      "schema": "Experience",
+      "description": "Professional experience entries"
+    },
+    "services/{serviceId}": {
+      "schema": "Service",
+      "description": "Offered services entries"
+    },
+    "hero/{heroId}": {
+      "schema": "SectionTexts",
+      "description": "Hero section texts"
+    },
+    "about/{aboutId}": {
+      "schema": "SectionTexts",
+      "description": "About section texts"
+    },
+    "contact/{contactId}": {
+      "schema": "SectionTexts",
+      "description": "Contact section texts"
+    },
+    "settings/section_texts": {
+      "schema": "SectionTexts",
+      "description": "Customizable homepage section text settings"
+    },
+    "settings/categories": {
+      "schema": "CategoryList",
+      "description": "Customizable portfolio category list"
+    }
+  }
+}
